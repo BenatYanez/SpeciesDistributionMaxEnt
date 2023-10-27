@@ -1,0 +1,658 @@
+siterows<-which(an44$site==unique(an44$site)[st])
+reorder<-1:length(an44[,1])  #
+    an4 <- an44#
+  for (st in unique(an44$site)) {#
+#
+#obtain rows that correspond to each site#
+siterows<-which(an44$site==unique(an44$site)[st])#
+#
+reorder[siterows]<-sample(siterows)#
+  }
+reorder
+reorder[siterows]
+st<-1
+siterows<-which(an44$site==unique(an44$site)[st])
+siterows
+sample(siterows)
+reorder[siterows]
+sample(siterows)
+reorder<-1:length(an44[,1])  #
+    an4 <- an44#
+  for (st in unique(an44$site)) {#
+#
+#obtain rows that correspond to each site#
+siterows<-which(an44$site==unique(an44$site)[st])#
+#
+reorder[siterows]<-sample(siterows)#
+  }
+reorder
+st
+siterows<-which(an44$site==st)
+siterows
+reorder[siterows]<-sample(siterows)
+reorder<-1:length(an44[,1])  #
+    an4 <- an44#
+  for (st in unique(an44$site)) {#
+#
+#obtain rows that correspond to each site#
+siterows<-which(an44$site==st)#
+#
+reorder[siterows]<-sample(siterows)#
+  }
+reorder
+reordertemp<-1:length(an44[,1])  #
+    an4 <- an44#
+  for (st in unique(an44$site)) {#
+#
+		#obtain rows that correspond to each site#
+		siterows<-which(an44$site==st)#
+#
+		reordertemp[siterows]<-sample(siterows)#
+  }#
+  an4<-an44[reordertemp,53:2860]
+an4$incaverage <-rep(NA,length(an4[,1]))#
+  an4$incmin <- rep(NA,length(an4[,1]))#
+  an4$incmax <- rep(NA,length(an4[,1]))#
+  an4$incvar <- rep(NA,length(an4[,1]))
+for(rowno in 1:nrow(an4)){#
+    startinc3<-which(names(an4)==paste("X",an4$fki[rowno],sep=""))#
+    endinc3<-which(names(an4)==paste("X",an4$hd_1.45[rowno],sep=""))#
+    if(length(endinc3)==1){#
+      an4$incaverage2[rowno]<-rowMeans(an4[rowno,startinc3:endinc3])#
+      #the average temperature experienced by an individual in a year#
+      an4$incmin2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,min))#
+      #the minimum temperature experienced by an individual in a year#
+      an4$incmax2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,max))#
+      #the maximum temperature experienced by an individual in a year#
+      an4$incvar2[rowno]<-apply(an4[rowno,startinc3:endinc3],1,var)#
+      #The variation in temperature experienced by an individual in a year#
+    }}#
+  null3$avvar[simrep] <- var(an4$incaverage2)#
+  #The variation in average temperature experienced among individuals#
+  null3$minvar[simrep] <- var(an4$incmin2)#
+  #the variation in min temp among individuals#
+  null3$maxvar[simrep] <- var(an4$incmax2)#
+  #the variation in max temp among individuals#
+  null3$varmean[simrep] <- mean(an4$incvar2,na.rm=T)#
+  #the mean variation in temperature experienced by individuals in a year#
+}
+rowno
+an4$incaverage2
+rowMeans(an4[rowno,startinc3:endinc3])
+an4$fki
+for(rowno in 1:nrow(an4)){#
+    startinc3<-which(names(an4)==paste("X",an44$fki[rowno],sep=""))#
+    endinc3<-which(names(an4)==paste("X",an44$hd_1.45[rowno],sep=""))#
+    if(length(endinc3)==1){#
+      an4$incaverage2[rowno]<-rowMeans(an4[rowno,startinc3:endinc3])#
+      #the average temperature experienced by an individual in a year#
+      an4$incmin2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,min))#
+      #the minimum temperature experienced by an individual in a year#
+      an4$incmax2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,max))#
+      #the maximum temperature experienced by an individual in a year#
+      an4$incvar2[rowno]<-apply(an4[rowno,startinc3:endinc3],1,var)#
+      #The variation in temperature experienced by an individual in a year#
+    }}
+an4$incaverage <-rep(NA,length(an4[,1]))#
+  an4$incmin <- rep(NA,length(an4[,1]))#
+  an4$incmax <- rep(NA,length(an4[,1]))#
+  an4$incvar <- rep(NA,length(an4[,1]))
+an44<-an2[-which(is.na(an2$hd_1.45)==TRUE),]#
+an44<-an44[which(an44$hd_1.45<162),]#
+#Ally:couldn't you just use the same an22 you generated before null3?#
+#
+null3 <- data.frame(matrix(nrow = 10))#
+names(null3) <- c("simrep")#
+#
+for(simrep in 1:10){#
+  # reorder fki and hd, within each site#
+  # Loop through each site in the data frame#
+reordertemp<-1:length(an44[,1])  #
+    an4 <- an44#
+  for (st in unique(an44$site)) {#
+#
+		#obtain rows that correspond to each site#
+		siterows<-which(an44$site==st)#
+#
+		reordertemp[siterows]<-sample(siterows)#
+  }#
+  an4<-an44[reordertemp,53:2860]#
+  # and then repeat code as previously, to calculate av/min/max/var temp for each new row#
+  an4$incaverage <-rep(NA,length(an4[,1]))#
+  an4$incmin <- rep(NA,length(an4[,1]))#
+  an4$incmax <- rep(NA,length(an4[,1]))#
+  an4$incvar <- rep(NA,length(an4[,1]))#
+  for(rowno in 1:nrow(an4)){#
+    startinc3<-which(names(an4)==paste("X",an44$fki[rowno],sep=""))#
+    endinc3<-which(names(an4)==paste("X",an44$hd_1.45[rowno],sep=""))#
+    if(length(endinc3)==1){#
+      an4$incaverage2[rowno]<-rowMeans(an4[rowno,startinc3:endinc3])#
+      #the average temperature experienced by an individual in a year#
+      an4$incmin2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,min))#
+      #the minimum temperature experienced by an individual in a year#
+      an4$incmax2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,max))#
+      #the maximum temperature experienced by an individual in a year#
+      an4$incvar2[rowno]<-apply(an4[rowno,startinc3:endinc3],1,var)#
+      #The variation in temperature experienced by an individual in a year#
+    }}#
+  null3$avvar[simrep] <- var(an4$incaverage2)#
+  #The variation in average temperature experienced among individuals#
+  null3$minvar[simrep] <- var(an4$incmin2)#
+  #the variation in min temp among individuals#
+  null3$maxvar[simrep] <- var(an4$incmax2)#
+  #the variation in max temp among individuals#
+  null3$varmean[simrep] <- mean(an4$incvar2,na.rm=T)#
+  #the mean variation in temperature experienced by individuals in a year#
+}
+hist(null3$avvar)
+mean(null2$minvar)
+mean(null3$minvar)
+mean(null2$maxvar)
+mean(null3$maxvar)
+an44<-an2[-which(is.na(an2$hd_1.45)==TRUE),]#
+an44<-an44[which(an44$hd_1.45<162),]#
+#Ally:couldn't you just use the same an22 you generated before null3?#
+#
+null3 <- data.frame(matrix(nrow = 100))#
+names(null3) <- c("simrep")#
+#
+for(simrep in 1:10){#
+  # reorder fki and hd, within each site#
+  # Loop through each site in the data frame#
+reordertemp<-1:length(an44[,1])  #
+    an4 <- an44#
+  for (st in unique(an44$site)) {#
+#
+		#obtain rows that correspond to each site#
+		siterows<-which(an44$site==st)#
+#
+		reordertemp[siterows]<-sample(siterows)#
+  }#
+  an4<-an44[reordertemp,53:2860]#
+  # and then repeat code as previously, to calculate av/min/max/var temp for each new row#
+  an4$incaverage <-rep(NA,length(an4[,1]))#
+  an4$incmin <- rep(NA,length(an4[,1]))#
+  an4$incmax <- rep(NA,length(an4[,1]))#
+  an4$incvar <- rep(NA,length(an4[,1]))#
+  for(rowno in 1:nrow(an4)){#
+    startinc3<-which(names(an4)==paste("X",an44$fki[rowno],sep=""))#
+    endinc3<-which(names(an4)==paste("X",an44$hd_1.45[rowno],sep=""))#
+    if(length(endinc3)==1){#
+      an4$incaverage2[rowno]<-rowMeans(an4[rowno,startinc3:endinc3])#
+      #the average temperature experienced by an individual in a year#
+      an4$incmin2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,min))#
+      #the minimum temperature experienced by an individual in a year#
+      an4$incmax2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,max))#
+      #the maximum temperature experienced by an individual in a year#
+      an4$incvar2[rowno]<-apply(an4[rowno,startinc3:endinc3],1,var)#
+      #The variation in temperature experienced by an individual in a year#
+    }}#
+  null3$avvar[simrep] <- var(an4$incaverage2)#
+  #The variation in average temperature experienced among individuals#
+  null3$minvar[simrep] <- var(an4$incmin2)#
+  #the variation in min temp among individuals#
+  null3$maxvar[simrep] <- var(an4$incmax2)#
+  #the variation in max temp among individuals#
+  null3$varmean[simrep] <- mean(an4$incvar2,na.rm=T)#
+  #the mean variation in temperature experienced by individuals in a year#
+}
+mean(null3$minvar)
+which(null3$minvar<5.27)
+hist(null3$minvar)
+null3$minvar
+an44<-an2[-which(is.na(an2$hd_1.45)==TRUE),]#
+an44<-an44[which(an44$hd_1.45<162),]#
+#Ally:couldn't you just use the same an22 you generated before null3?#
+#
+null3 <- data.frame(matrix(nrow = 100))#
+names(null3) <- c("simrep")#
+#
+for(simrep in 1:100){#
+  # reorder fki and hd, within each site#
+  # Loop through each site in the data frame#
+reordertemp<-1:length(an44[,1])  #
+    an4 <- an44#
+  for (st in unique(an44$site)) {#
+#
+		#obtain rows that correspond to each site#
+		siterows<-which(an44$site==st)#
+#
+		reordertemp[siterows]<-sample(siterows)#
+  }#
+  an4<-an44[reordertemp,53:2860]#
+  # and then repeat code as previously, to calculate av/min/max/var temp for each new row#
+  an4$incaverage <-rep(NA,length(an4[,1]))#
+  an4$incmin <- rep(NA,length(an4[,1]))#
+  an4$incmax <- rep(NA,length(an4[,1]))#
+  an4$incvar <- rep(NA,length(an4[,1]))#
+  for(rowno in 1:nrow(an4)){#
+    startinc3<-which(names(an4)==paste("X",an44$fki[rowno],sep=""))#
+    endinc3<-which(names(an4)==paste("X",an44$hd_1.45[rowno],sep=""))#
+    if(length(endinc3)==1){#
+      an4$incaverage2[rowno]<-rowMeans(an4[rowno,startinc3:endinc3])#
+      #the average temperature experienced by an individual in a year#
+      an4$incmin2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,min))#
+      #the minimum temperature experienced by an individual in a year#
+      an4$incmax2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,max))#
+      #the maximum temperature experienced by an individual in a year#
+      an4$incvar2[rowno]<-apply(an4[rowno,startinc3:endinc3],1,var)#
+      #The variation in temperature experienced by an individual in a year#
+    }}#
+  null3$avvar[simrep] <- var(an4$incaverage2)#
+  #The variation in average temperature experienced among individuals#
+  null3$minvar[simrep] <- var(an4$incmin2)#
+  #the variation in min temp among individuals#
+  null3$maxvar[simrep] <- var(an4$incmax2)#
+  #the variation in max temp among individuals#
+  null3$varmean[simrep] <- mean(an4$incvar2,na.rm=T)#
+  #the mean variation in temperature experienced by individuals in a year#
+}
+hist(null3$minvar)
+mean(null3$minvar)
+null3$minvar
+simrep
+an44<-an2[-which(is.na(an2$hd_1.45)==TRUE),]#
+an44<-an44[which(an44$hd_1.45<162),]#
+#Ally:couldn't you just use the same an22 you generated before null3?#
+#
+null3 <- data.frame(matrix(nrow = 100))#
+names(null3) <- c("simrep")#
+#
+for(simrep in 1:100){#
+  # reorder fki and hd, within each site#
+  # Loop through each site in the data frame#
+reordertemp<-1:length(an44[,1])  #
+    an4 <- an44#
+  for (st in unique(an44$year)) {#
+#
+		#obtain rows that correspond to each site#
+		siterows<-which(an44$year==st)#
+#
+		reordertemp[siterows]<-sample(siterows)#
+  }#
+  an4<-an44[reordertemp,53:2860]#
+  # and then repeat code as previously, to calculate av/min/max/var temp for each new row#
+  an4$incaverage <-rep(NA,length(an4[,1]))#
+  an4$incmin <- rep(NA,length(an4[,1]))#
+  an4$incmax <- rep(NA,length(an4[,1]))#
+  an4$incvar <- rep(NA,length(an4[,1]))#
+  for(rowno in 1:nrow(an4)){#
+    startinc3<-which(names(an4)==paste("X",an44$fki[rowno],sep=""))#
+    endinc3<-which(names(an4)==paste("X",an44$hd_1.45[rowno],sep=""))#
+    if(length(endinc3)==1){#
+      an4$incaverage2[rowno]<-rowMeans(an4[rowno,startinc3:endinc3])#
+      #the average temperature experienced by an individual in a year#
+      an4$incmin2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,min))#
+      #the minimum temperature experienced by an individual in a year#
+      an4$incmax2[rowno]<-as.numeric(apply(an4[rowno,startinc3:endinc3],1,max))#
+      #the maximum temperature experienced by an individual in a year#
+      an4$incvar2[rowno]<-apply(an4[rowno,startinc3:endinc3],1,var)#
+      #The variation in temperature experienced by an individual in a year#
+    }}#
+  null3$avvar[simrep] <- var(an4$incaverage2)#
+  #The variation in average temperature experienced among individuals#
+  null3$minvar[simrep] <- var(an4$incmin2)#
+  #the variation in min temp among individuals#
+  null3$maxvar[simrep] <- var(an4$incmax2)#
+  #the variation in max temp among individuals#
+  null3$varmean[simrep] <- mean(an4$incvar2,na.rm=T)#
+  #the mean variation in temperature experienced by individuals in a year#
+}
+simrep
+mean(null3$minvar[1:49])
+31+28+21
+80/365
+132/0.2191781
+3+2+5.7+4.4+2.8
+15.9-2.5
+3+2+5.7+4.4+2.8
+3+2+5.7+4.4+2.8+2
+3+2+5.7+4.4+2.8+2-4
+14/39
+rm(list=ls())
+ls()
+#need to insert code to deal with APR.#
+#
+findmybird<-function(x){#
+	adults<-read.csv("~/Dropbox/transect/master_data/blue tits/Adults.csv")#
+#
+	nestlings<-read.csv("~/Dropbox/transect/master_data/blue tits/Nestlings.csv")#
+	findadult<-which(as.character(adults$ring)==paste(x))#
+	findnestling<-which(as.character(nestlings$ring)==paste(x))	#
+	if(length(findadult)==0){#
+		if(length(findnestling)==0){#
+			return("bird not found, could be a control from another ringer")#
+		}#
+#
+		if(length(findnestling)>0){#
+			return(list("nestlings"=nestlings[findnestling,],"adults"="null"))#
+		}#
+	}#
+#
+	if(length(findadult)>0){#
+		if(length(findnestling)==0){#
+			return(list("nestlings"="null","adults"=adults[findadult,]))#
+		}#
+#
+		if(length(findnestling)>0){#
+			return(list("nestlings"=nestlings[findnestling,],"adults"=adults[findadult,]))#
+		}#
+	}#
+	}
+findmybird ("_APR7828")
+findmybird ("ARD6744)
+""
+findmybird ("ARD6744")
+findmybird ("ARD7974")
+findmybird ("AXH8472")
+findmybird ("APR7926")
+findmybird ("_APR7926")
+findmybird ("_APR7343")
+findmybird ("_APR7654")
+findmybird ("ARD6612")
+findmybird ("_APR7108")
+findmybird ("_APR7093")
+findmybird ("AXH8876")
+findmybird ("AXH7841")
+findmybird ("AXH8874")
+findmybird ("_APR7357")
+findmybird ("S921907")
+findmybird ("AXH9982")
+218/115
+218/115*365
+218/145*365
+findmybird("S921907")
+findmybird
+~/Dropbox/teaching/MSC/biodiversityunderpressure/SDMs/practicals/Data_SwissBreedingBirds.csv
+17.50+9.50+6.50+15
+findmybird("AXH7154")
+findmybird("ARD7577")
+findmybird("_APR7215")
+findmybird("AXH7147")
+findmybird("_APR7674")
+findmybird("ARD7539")
+findmybird("_APR7545")
+findmybird("AXH7843")
+findmybird("AXH7114")
+findmybird("AXH7114")
+findmybird("AHD7789")
+findmybird("_APR8051")
+findmybird("_APR7838")
+findmybird("AXH9852")
+findmybird("AXH8389")
+findmybird("AXH8390")
+findmybird("_APR8404")
+findmybird("AXH8194")
+findmybird("_APR8194")
+findmybird("_APR7676")
+findmybird("AHD7068")
+findmybird("AXH7953")
+findmybird("_APR7314")
+findmybird("AXH7976")
+findmybird("ARD6178")
+findmybird("S922748")
+findmybird("_APR7652")
+findmybird("_APR7531")
+findmybird("_APR7313")
+findmybird("_APR7742")
+findmybird("_APR7534")
+findmybird("_APR8927")
+findmybird("_AXH7208")
+findmybird("AXH7208")
+83+55
+findmybird("AHD7068")
+findmybird("AXH7953")
+findmybird("_APR7314")
+findmybird("AXH7976")
+findmybird("_APR7652")
+findmybird("AXH9981")
+findmybird("AXH7219")
+spatialreps<-40#
+spatial_tempsd<-3#
+slope<--5#
+years<-40#
+year_tempsd<-4#
+gridtime_sd<-0.1#
+meantemp<-10#
+#
+spatial<-rnorm(spatialreps,mean=0,sd= spatial_tempsd)#
+temporal<-rnorm(years,mean=0,sd= year_tempsd)#
+#
+rep(1:spatialreps,years)
+year<-rep(1:years,each=spatialreps)
+year
+actualtemp<-meantemp+ spatial[site]+temporal[meantemp]+rnorm(years*spatialreps,0, gridtime_sd)
+actualtemp<-meantemp+ spatial[site]+temporal[year]+rnorm(years*spatialreps,0, gridtime_sd)#
+#
+phenol<-100* actualtemp* slope+rnorm(years*spatialreps,0,phenol_sd)
+model<-lm(phenol~ actualtemp)
+spatialreps<-40#
+spatial_tempsd<-3#
+slope<--5#
+years<-40#
+year_tempsd<-4#
+gridtime_sd<-0.1#
+meantemp<-10#
+phenolsd<-4#
+#
+spatial<-rnorm(spatialreps,mean=0,sd= spatial_tempsd)#
+temporal<-rnorm(years,mean=0,sd= year_tempsd)#
+#
+site<-rep(1:spatialreps,years)#
+year<-rep(1:years,each=spatialreps)#
+#
+actualtemp<-meantemp+ spatial[site]+temporal[year]+rnorm(years*spatialreps,0, gridtime_sd)#
+#
+phenol<-100* actualtemp* slope+rnorm(years*spatialreps,0,phenol_sd)#
+model<-lm(phenol~ actualtemp)
+spatialreps<-40#
+spatial_tempsd<-3#
+slope<--5#
+years<-40#
+year_tempsd<-4#
+gridtime_sd<-0.1#
+meantemp<-10#
+phenol_sd<-4#
+#
+spatial<-rnorm(spatialreps,mean=0,sd= spatial_tempsd)#
+temporal<-rnorm(years,mean=0,sd= year_tempsd)#
+#
+site<-rep(1:spatialreps,years)#
+year<-rep(1:years,each=spatialreps)#
+#
+actualtemp<-meantemp+ spatial[site]+temporal[year]+rnorm(years*spatialreps,0, gridtime_sd)#
+#
+phenol<-100* actualtemp* slope+rnorm(years*spatialreps,0,phenol_sd)#
+model<-lm(phenol~ actualtemp)
+summary(model)
+spatialreps<-40#
+spatial_tempsd<-3#
+slope<--5#
+years<-40#
+year_tempsd<-4#
+gridtime_sd<-0.1#
+meantemp<-10#
+phenol_sd<-4#
+#
+spatial<-rnorm(spatialreps,mean=0,sd= spatial_tempsd)#
+temporal<-rnorm(years,mean=0,sd= year_tempsd)#
+#
+site<-rep(1:spatialreps,years)#
+year<-rep(1:years,each=spatialreps)#
+#
+actualtemp<-meantemp+ spatial[site]+temporal[year]+rnorm(years*spatialreps,0, gridtime_sd)#
+#
+phenol<-100+ actualtemp* slope+rnorm(years*spatialreps,0,phenol_sd)#
+model<-lm(phenol~ actualtemp)
+summary(model)
+spatialreps<-40#
+spatial_tempsd<-3#
+slope<--5#
+years<-40#
+year_tempsd<-4#
+gridtime_sd<-0.1#
+meantemp<-10#
+phenol_sd<-4#
+temp_error_sd<-1#
+#
+spatial<-rnorm(spatialreps,mean=0,sd= spatial_tempsd)#
+temporal<-rnorm(years,mean=0,sd= year_tempsd)#
+#
+site<-rep(1:spatialreps,years)#
+year<-rep(1:years,each=spatialreps)#
+#
+actualtemp<-meantemp+ spatial[site]+temporal[year]+rnorm(years*spatialreps,0, gridtime_sd)#
+#
+allocatedtemp<-meantemp+ spatial[site]+temporal[year]+rnorm(years*spatialreps,0, gridtime_sd)+rnorm(years*spatialreps,0, temp_error_sd)#
+phenol<-100+ actualtemp* slope+rnorm(years*spatialreps,0,phenol_sd)#
+model<-lm(phenol~ allocatedtemp)
+summary(model)
+library(MCMCglmm)#
+#
+simdata<-as.data.frame(cbind(site,year,actualtemp,allocatedtemp,phenol))#
+#
+model<-MCMCglmm(cbind(phenol,allocatedtemp)~trait-1,random=~us(trait):site+us(trait):year,rcov=~us(trait):units,family=c("gaussian","gaussian"),data=simdata)
+prior<-list(R=list(V=diag(2),nu=0.002),#
+             G=list(G1=list(V=diag(2), nu=2, alpha.mu=c(0,0), alpha.V=diag(2)*1000),#
+                    G1=list(V=diag(2), nu=2, alpha.mu=c(0,0), alpha.V=diag(2)*1000),#
+               )
+model<-MCMCglmm(cbind(phenol,allocatedtemp)~trait-1,random=~us(trait):site+us(trait):year,rcov=~us(trait):units,family=c("gaussian","gaussian"),data=simdata,prio=prior)
+prior<-list(R=list(V=diag(2),nu=0.002),#
+             G=list(G1=list(V=diag(2), nu=2, alpha.mu=c(0,0), alpha.V=diag(2)*1000),#
+                    G1=list(V=diag(2), nu=2, alpha.mu=c(0,0), alpha.V=diag(2)*1000))#
+                    )
+model<-MCMCglmm(cbind(phenol,allocatedtemp)~trait-1,random=~us(trait):site+us(trait):year,rcov=~us(trait):units,family=c("gaussian","gaussian"),data=simdata,prior=prior)
+summary(model)
+#temporal slope#
+mean(model$VCV[,"traitallocatedtemp:traitphenol.year"]/model$VCV[,"traitallocatedtemp:traitallocatedtemp.year"])
+#spatial slope#
+mean(model$VCV[,"traitallocatedtemp:traitphenol.site"]/model$VCV[,"traitallocatedtemp:traitallocatedtemp.site"])
+#residual slope#
+mean(model$VCV[,"traitallocatedtemp:traitphenol.units"]/model$VCV[,"traitallocatedtemp:traitallocatedtemp.units"])
+findmybird("AXH8069")
+findmybird("AXH9941")
+findmybird("_APR8624")
+findmybird("_APR8730")
+findmybird("ARD6433")
+findmybird("_APR8212")
+findmybird("_APR8727")
+findmybird("S921846")
+findmybird("AHD7068")
+findmybird("AXH8835")
+findmybird("AXH7960")
+findmybird("AXH7765")
+findmybird("AXH9605")
+findmybird("AXH9013")
+findmybird("AXH9108")
+findmybird("AXH7143")
+findmybird("AXH9505")
+findmybird("Z869020")
+findmybird("ARD7770")
+findmybird("AXH9868")
+findmybird("_APR7729")
+findmybird("_APR7699")
+findmybird("_APR7731")
+findmybird("AXH7800")
+findmybird("AXH8071")
+findmybird("_APR7549")
+ads<-read.csv(""~/Dropbox/transect/master_data/blue tits/Adults.csv")
+ads<-read.csv("~/Dropbox/transect/master_data/blue tits/Adults.csv")
+dim(ads)
+table(ads$ringer,paste(ads$year,ads$date))
+sort(table(ads$ringer,paste(ads$year,ads$date)))
+which(table(ads$ringer,paste(ads$year,ads$date))==62)
+which(table(ads$ringer,paste(ads$year,ads$date)))
+table(ads$ringer,paste(ads$year,ads$date))
+ads$notwinter<-subset(ads,doy>100)
+ads2<-subset(ads,date>100)
+table(ads2$ringer,paste(ads2$year,ads2$date))
+sort(table(ads2$ringer,paste(ads2$year,ads2$date)))
+table(ads2$ringer,paste(ads2$year,ads2$date))[1,]
+table(ads2$ringer,paste(ads2$year,ads2$date))[1,]
+table(paste(ads2$year,ads2$date))
+sort(table(paste(ads2$year,ads2$date)))
+findmybird("AXH8483")
+findmybird("AHD7790")
+findmybird("AXH7754")
+findmybird("_APR7837")
+findmybird("_APR7814")
+findmybird("AXH8486")
+sort(table(paste(ads2$year,ads2$date)))
+1+2+4+6+2
+15+28
+sort(table(paste(ads2$year,ads2$date)))
+table(ads2$ringer,paste(ads2$year,ads2$date))
+apply(table(ads2$ringer,paste(ads2$year,ads2$date)),2,sum)
+which.max(apply(table(ads2$ringer,paste(ads2$year,ads2$date)),2,sum))
+table(ads2$ringer,paste(ads2$year,ads2$date))[,177]
+findmybird("AXH9394")
+findmybird("AXH9465")
+findmybird("AHD7068")
+findmybird("_APR7721")
+findmybird("_APR7722")
+findmybird("AXH9891")
+findmybird("AXH9241")
+findmybird("AXH9421")
+findmybird("ARD7391")
+findmybird("_APR8137")
+findmybird("_APR8129")
+findmybird("_APR8035")
+findmybird("AXH8240")
+findmybird("_APR8731")
+findmybird("AXH9869")
+Z869020
+findmybird("Z869020")
+findmybird("Z869021")
+names(ads)
+substring(ads$ring,1,4)
+table(substring(ads$ring,1,4))
+findmybird("Z869020")
+set.dir("~/Dropbox/teaching/MSC/biodiversityunderpressure/SDMs/practicals/wc2.1_10")
+setwd("~/Dropbox/teaching/MSC/biodiversityunderpressure/SDMs/practicals/wc2.1_10")
+setwd("~/Dropbox/teaching/MSC/biodiversityunderpressure/SDMs/practicals/wc2.1_10")
+setwd("~/Dropbox/teaching/MSC/biodiversityunderpressure/SDMs/practicals/wc2.1_10m")
+rm(list=ls())
+library(geodata)#
+library(predicts)#
+library(terra)
+occdata <- geodata::sp_occurrence("Anthocharis", "cardamines*", geo=FALSE,removeZeros=TRUE,start=1,end=10000)
+wrld <- world(path=".")#
+plot(wrld, xlim=c(-180,180), ylim=c(-80,80), col="light yellow", border="light gray")#
+# add the points#
+points(occdata$lon, occdata$lat, col='blue', pch=20)
+dups <- duplicated(occdata[, c('lon', 'lat')])
+occ <- occdata[!dups, ]
+output_dir<-"~/Dropbox/teaching/MSC/biodiversityunderpressure/SDMs/practicals/"
+setwd("~/Dropbox/teaching/MSC/biodiversityunderpressure/SDMs/practicals/wc2.1_10m")#
+tiff_files <- list.files(pattern = "\\.tif$", full.names = TRUE)#
+raster_list <- lapply(tiff_files, rast)#
+predictors <- c(raster_list[[1]],raster_list[[12]],raster_list[[13]],raster_list[[14]],raster_list[[15]],raster_list[[16]],raster_list[[17]],raster_list[[18]],raster_list[[19]],raster_list[[2]],raster_list[[3]],raster_list[[4]],raster_list[[5]],raster_list[[6]],raster_list[[7]],raster_list[[8]],raster_list[[9]],raster_list[[10]],raster_list[[11]])
+summary(occ$lon)
+summary(occ$lat)
+e <- ext(-10, 81, 31, 70)
+predictors <- crop(predictors, e)#
+#
+names(predictors)<-substring(names(predictors),11,16)
+plot(predictors,1:9)
+plot(predictors,1)#
+points(occ$lon,occ$lat, col='blue',pch=16)
+bg<-spatSample(predictors,5000,"random", na.rm=TRUE, as.points=TRUE,ext=e)#
+#
+#Here we'll plot our background points on a map of climwin variable 1.#
+plot(predictors, 1)#
+points(bg, cex=0.1)
+occlatlon<-cbind(occ$lon,occ$lat)#
+presvals <- extract(predictors, occlatlon)#
+absvals <- values(bg)#
+pb <- c(rep(1, nrow(presvals)), rep(0, nrow(absvals)))#
+#The first column of the dataset is a vector of 1s for presences and 0s for background data.#
+sdmdata <- data.frame(cbind(pb, rbind(presvals, absvals)))
+pairs(sdmdata[,2:5], cex=0.1)
+model<-MaxEnt(sdmdata[,-1],sdmdata[,1])
+model
+predictedocc <- predict(model, predictors, args=c("outputformat=raw")) #
+#
+par(mfrow=c(2,1))#
+plot(predictedocc)#
+plot(predictedocc)#
+points(occlatlon,pch=".")

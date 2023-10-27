@@ -1,0 +1,21 @@
+---
+title: "Predicting species distribution based on future climate data"
+author: "Beñat Yañez"
+date: "06/10/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+***
+
+## Goals for this practical
+
+* #### Obtain species occurence data for *Gypaetus barbatus* and *Antilocapra americana* from GBIF
+* #### Obtain current and future climate data from WorldClim to use as species distribution predictors
+* #### Use a MaxEnt approach for pressence only data by creating background data and matching occurrence to climate data and see how good the model is
+* ###Carry out predictions of future ranges based on future climate data
+
+***
